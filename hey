@@ -1,0 +1,53 @@
+import time
+
+print("🤖 AI SENTIMENT ANALYZER v1.0 🤖")
+print("-" * 30)
+
+# این بخش دیتابیس هوش مصنوعی ماست (دیکشنری پایتون)
+ai_database = {
+    "positive": ["good", "great", "awesome", "love", "happy", "excellent", "best", "beautiful"],
+    "negative": ["bad", "hate", "terrible", "awful", "sad", "worst", "angry", "fail"]
+}
+
+while True:
+    user_text = input("\nEnter a sentence (or type 'exit'): ").lower()
+
+    if user_text == "exit":
+        print("Shutting down AI... Goodbye!")
+        break
+
+    # یک افکت صبر کردن تا شبیه هوش مصنوعی واقعی شود
+    print("Analyzing...", end="", flush=True)
+    time.sleep(0.5)
+    print(".", end="", flush=True)
+    time.sleep(0.5)
+    print(".", end="", flush=True)
+    time.sleep(0.5)
+    print("")
+
+    # مغز هوش مصنوعی: بررسی کلمات
+    pos_score = 0
+    neg_score = 0
+    words = user_text.split()
+
+    for word in words:
+        if word in ai_database["positive"]:
+            pos_score += 1
+        elif word in ai_database["negative"]:
+            neg_score += 1
+
+    # نمایش نتایج به سبک پروژه‌های واقعی گیت‌هاب
+    print("-" * 30)
+    if pos_score > neg_score:
+        print("✅ RESULT: POSITIVE")
+    elif neg_score > pos_score:
+        print("❌ RESULT: NEGATIVE")
+    else:
+        print("😐 RESULT: NEUTRAL")
+    
+    # محاسبه درصد اعتماد (یک فرمول ساده برای خفن شدن خروجی)
+    total_matches = pos_score + neg_score
+    confidence = min((total_matches * 20) + 50, 99)
+    
+    print(f"📈 Confidence Score: {confidence}%")
+    print("-" * 30)
